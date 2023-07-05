@@ -1,19 +1,24 @@
-
-
-import TituloPrincipal from "./componets/TituloPrincipal/TituloPrincipal"
-import ItemCount from "./componets/ItemCount/ItemCount"
-import NavBar from "./componets/NavBar/NavBar"
-import ItemListContainer from "./componets/ItemListContainer/ItemListContainer"
-
-const App =() => {
+import ItemCount from "./componentes/ItemCount/ItemCount"
+import NavBar from "./componentes/NavBar/NavBar"
+import ItemListContainer from "./componentes/ItemListContainer/ItemListContainer"
+import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+const App = () => {
   return (
     <>
-    <NavBar/>
-    <ItemListContainer greting ={"Bienvenidos a GEEK N RESIN"}/>
-    <TituloPrincipal titulo ={"La combinacion entre artesania y nerdo"} frase = {"GEEK FTW"} />
-    <ItemCount/>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={ <ItemListContainer/> } />
+          <Route path="/categoria/:idCategoria" element={ <ItemListContainer/> } />
+          <Route path="/item/:idItem" element={<ItemDetailContainer/>} />
+          <Route path="*" element={<h2>Sitio en construcción, vuelva más tarde</h2>}  />
+        </Routes>
+      </BrowserRouter>
     </>
+
   )
 }
 
 export default App
+
